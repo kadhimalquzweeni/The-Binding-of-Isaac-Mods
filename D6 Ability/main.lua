@@ -45,8 +45,8 @@ function D6Ability:RerollRoom()
 end
 
 function D6Ability:OnPostRender()
-    if Input.IsButtonTriggered(Keyboard.KEY_LEFT_CONTROL, 0)
-        or Input.IsButtonTriggered(Keyboard.KEY_RIGHT_CONTROL, 0) then
+    if Input.IsButtonTriggered(Keyboard.KEY_LEFT_CONTROL, -1)
+        or Input.IsButtonTriggered(Keyboard.KEY_RIGHT_CONTROL, -1) then
         self:RerollRoom()
     end
 end
