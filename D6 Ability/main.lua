@@ -9,7 +9,7 @@ local D6Ability = RegisterMod("D6 Ability", 1)
 local game = Game()
 
 local CHARGE_ROOMS = 6
-local chargeProgress = 0
+local chargeProgress = CHARGE_ROOMS
 
 local function SaveCharge()
     D6Ability:SaveData(tostring(chargeProgress))
@@ -20,7 +20,7 @@ function D6Ability:LoadRunData(isContinued)
         local savedProgress = tonumber(self:LoadData())
         chargeProgress = math.max(0, math.min(CHARGE_ROOMS, savedProgress or 0))
     else
-        chargeProgress = 0
+        chargeProgress = CHARGE_ROOMS
         SaveCharge()
     end
 end
