@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Boss Room Teleport</name>
+    <directory>boss room teleport</directory>
+    <description>Press Left Shift to teleport directly to the boss room on the current floor.</description>
+    <version>1.0</version>
+    <visibility/>
+</metadata>
