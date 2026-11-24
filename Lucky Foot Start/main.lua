@@ -1,20 +1,33 @@
-local LuckyFootStartMod = RegisterMod("Lucky Foot Start", 1)
+-- Lucky Foot Start
+-- Gives the player Lucky Foot when a new run begins.
 
-local game = Game()
+local LuckyFootMod = RegisterMod("Lucky Foot Start", 1)
 
-local function GiveLuckyFoot(isContinued)
-    -- Only grant the item when a new run is started, not when continuing a save.
-    if isContinued then
-        return
-    end
+local LUCKY_FOOT_ITEM_ID = CollectibleType.COLLECTIBLE_LUCKY_FOOT
+local isNewGameAndNoLuckyFoot = false
 
-    for playerIndex = 0, game:GetNumPlayers() - 1 do
-        local player = game:GetPlayer(playerIndex)
-        player:AddCollectible(CollectibleType.COLLECTIBLE_LUCKY_FOOT)
+function LuckyFootMod:onPostNewLevel()
+    local player = Isaac.GetPlayer(0)
+
+    if Game():GetLevel():GetStage() == 1 then
+        isNewGameAndNoLuckyFoot = not player:HasCollectible(LUCKY_FOOT_ITEM_ID, true)
     end
 end
 
-LuckyFootStartMod:AddCallback(
-    ModCallbacks.MC_POST_GAME_STARTED,
-    GiveLuckyFoot
-)
+function LuckyFootMod:onPostPlayerInit()
+    local player = Isaac.GetPlayer(0)
+    isNewGameAndNoLuckyFoot = not player:HasCollectible(LUCKY_FOOT_ITEM_ID, true)
+end
+
+function LuckyFootMod:onPostPlayerRender()
+    local player = Isaac.GetPlayer(0)
+
+    if isNewGameAndNoLuckyFoot and not player:HasCollectible(LUCKY_FOOT_ITEM_ID, true) then
+        player:AddCollectible(LUCKY_FOOT_ITEM_ID, 0, false)
+        isNewGameAndNoLuckyFoot = false
+    end
+end
+
+LuckyFootMod:AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, LuckyFootMod.onPostNewLevel)
+LuckyFootMod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, LuckyFootMod.onPostPlayerInit)
+LuckyFootMod:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, LuckyFootMod.onPostPlayerRender)
