@@ -7,6 +7,9 @@ local itemConfig = Isaac.GetItemConfig()
 
 local MAX_ATTEMPTS = 100
 
+-- Prevent GetCollectible calls made by this mod from re-entering our callback.
+local isRollingTier4Item = false
+
 mod.state = {
     spent = false
 }
@@ -56,6 +59,11 @@ end
 --------------------------------------------------
 
 function mod:RollCollectible(itemPoolType, decrease, seed)
+    -- RollTier4Item uses ItemPool:GetCollectible, which can invoke this callback again.
+    if isRollingTier4Item then
+        return
+    end
+
     if mod.state.spent then
         return
     end
@@ -70,7 +78,17 @@ function mod:RollCollectible(itemPoolType, decrease, seed)
         return
     end
 
-    local itemID = RollTier4Item(itemPoolType, seed)
+    isRollingTier4Item = true
+    local success, itemID = pcall(RollTier4Item, itemPoolType, seed)
+    isRollingTier4Item = false
+
+    if not success then
+        Isaac.DebugString(
+            "[Tier 4 Item Start] Failed to roll a Quality 4 item: "
+            .. tostring(itemID)
+        )
+        return
+    end
 
     if itemID then
         mod.state.spent = true
