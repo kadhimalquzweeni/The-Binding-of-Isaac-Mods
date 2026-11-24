@@ -1,6 +1,6 @@
 --==================================================
 -- BOSS ROOM TELEPORT
--- Press Left Shift to teleport to the boss room.
+-- Press B to teleport to the boss room.
 --==================================================
 
 local BossRoomTeleport = RegisterMod("Boss Room Teleport", 1)
@@ -55,7 +55,7 @@ function BossRoomTeleport:TeleportToBossRoom()
 end
 
 function BossRoomTeleport:OnPostRender()
-    if Input.IsButtonTriggered(Keyboard.KEY_LEFT_SHIFT, -1) then
+    if Input.IsButtonTriggered(Keyboard.KEY_B, -1) then
         self:TeleportToBossRoom()
     end
 end
