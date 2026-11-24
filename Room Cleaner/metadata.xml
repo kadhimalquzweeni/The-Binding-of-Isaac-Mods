@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Room Cleaner</name>
+    <directory>room cleaner</directory>
+    <id>3844852480</id>
+    <description>[h2]💥 Automatic Room Cleaning[/h2]
+Automatically destroys supported environmental objects when entering a room, including:
+
+[list]
+[*]Rocks and tinted rocks
+[*]Bomb rocks and golden rocks
+[*]Mushrooms and pots
+[*]Skulls and tinted skulls
+[*]Poop
+[*]TNT
+[*]Spikes and other supported grid objects
+[*]Fireplaces
+[*]Shopkeepers, including hanging variants
+[/list]
+
+Destruction uses the game's damage and destruction mechanics wherever supported, rather than simply making objects disappear.
+
+[h2]🧲 Massive Pickup Magnet[/h2]
+The magnet attracts nearby pickups towards your character, even across massive rooms.
+
+Currently supported:
+[list]
+[*]Coins
+[*]Bombs
+[*]Keys
+[*]Grab Bags (Sacks)
+[/list]
+
+[h2]👹 Kill All Enemies[/h2]
+Press [b]C[/b] to instantly kill all active enemies in the current room.
+
+[h2]🚪 Boss Room Teleport[/h2]
+Press [b]Left Shift[/b] to teleport directly to the boss room on the current floor.</description>
+    <version>1.1</version>
+    <visibility>Public</visibility>
+    <tag id="Rooms"/>
+</metadata>
