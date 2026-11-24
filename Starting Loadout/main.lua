@@ -176,10 +176,6 @@ local function HandleMenuInput()
         MoveSelection(-COLUMNS)
     elseif Input.IsButtonTriggered(Keyboard.KEY_DOWN, 0) then
         MoveSelection(COLUMNS)
-    elseif Input.IsButtonTriggered(Keyboard.KEY_PAGEUP, 0) then
-        ChangePage(-1)
-    elseif Input.IsButtonTriggered(Keyboard.KEY_PAGEDOWN, 0) then
-        ChangePage(1)
     elseif Input.IsButtonTriggered(Keyboard.KEY_SPACE, 0) then
         ToggleCurrentItem()
     end
@@ -267,7 +263,7 @@ local function RenderMenu()
     end
 
     Isaac.RenderText(
-        "Arrows: Browse   SPACE: Toggle   PAGE UP/DOWN: Change page   I / ENTER / ESC: Close",
+        "Arrows: Browse (pages change automatically)   SPACE: Toggle   I / ENTER / ESC: Close",
         48,
         326,
         1,
