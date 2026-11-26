@@ -2,7 +2,6 @@
 <metadata>
     <name>Room Sweeper</name>
     <directory>room sweeper</directory>
-    <id>3844852480</id>
     <description>[h2]Automatic Room Sweeping[/h2]
 Automatically destroys supported environmental grid objects when entering a room, including rocks, tinted rocks, bomb rocks, golden rocks, mushrooms, pots, skulls, poop, TNT, spikes and other supported grid objects. Also damages fireplaces and shopkeepers using the game's damage mechanics.</description>
     <version>1.2</version>
