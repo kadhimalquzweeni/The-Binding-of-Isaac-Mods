@@ -21,7 +21,7 @@ function D6Ability:RerollRoom()
 
             if pickup and pickup.SubType > 0 and pickup:CanReroll() then
                 local poolType = itemPool:GetPoolForRoom(room:GetType(), pickup.InitSeed)
-                local newItem = itemPool:GetCollectible(poolType, true, pickup.InitSeed)
+                local newItem = itemPool:GetCollectible(poolType, false, pickup.InitSeed)
 
                 if newItem and newItem > 0 then
                     pickup:Morph(
